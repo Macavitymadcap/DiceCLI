@@ -1,6 +1,10 @@
 import click
 
-from dice import roll_advantage, roll_array, roll_crit, roll_disadvantage, roll_string
+from dice import roll_advantage
+from dice import roll_array
+from dice import roll_crit
+from dice import roll_disadvantage
+from dice import roll_string
 
 
 @click.command()
