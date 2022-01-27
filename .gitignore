@@ -1,6 +1,6 @@
 **/__pycache__/
 pyenv.cfg
-**/Scripts
-**/dice.egg-info
-**/Include
-**/Lib/
+/Scripts
+/dice.egg-info
+/Include
+/Lib/
