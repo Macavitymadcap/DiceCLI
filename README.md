@@ -6,8 +6,28 @@
 <h2>Functions<h2>
 <h3>parse_die_string(string: str) -> Dict[str, Union[str, int]]:</h3>
 <p>Returns a dict of the constituents of a die roll from a given string.<br>
-    Args:<br>
-        string (str): A string representing a die roll<br>
-<br>    
-    Returns:<br>
-        parsed_roll: A dictionary of the roll string's elements.</p>
+Args:<br>
+string (str): A string representing a die roll<br>
+Returns:<br>
+parsed_roll: A dictionary of the roll string's elements.</p>
+<h3>roll_advantage(string: str) -> list[int]</h3>
+<p>Return two calls to roll_string sorted highest to lowest.<br>
+Args:<br>
+string (str): A string of a roll of a number of dice with modifiers<br>
+Attributes:<br>
+roll_list (list): A list of rolls sorted from highest [0] to lowest [1]<br>
+Returns:<br>
+roll_list: A list of the roll result.</p>
+<h3>roll_array(string: str) -> list[int]</h3>
+<p>Return an array of a number of die rolls with modifiers.<br>
+Args:<br>
+string (str): A string of die with modifiers to be rolled a number of times<br>
+Attributes:<br>
+parsed_string (dict): A dictionary of the roll elements in the string<br>
+num_dice (int): Int of the number of dice to be rolled, default 1<br>
+die (str): String of type of die to be rolled<br>
+symbol (str): String of operator to be appled, default +<br>
+modifier (int): An int to be applied to roll with operator, default 0<br>
+rolls (list): List of ints of all rolls with modifier applied to each<br>
+Returns:<br>
+rolls: An array of ints of die rolls</p>
