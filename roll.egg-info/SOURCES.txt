@@ -1,0 +1,9 @@
+commands.py
+dice.py
+setup.py
+roll.egg-info/PKG-INFO
+roll.egg-info/SOURCES.txt
+roll.egg-info/dependency_links.txt
+roll.egg-info/entry_points.txt
+roll.egg-info/requires.txt
+roll.egg-info/top_level.txt
