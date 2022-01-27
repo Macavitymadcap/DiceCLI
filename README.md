@@ -123,7 +123,7 @@ Args:<br>
 Attributes:<br>
 <ul>
 <li>roll_list (list): A list of rolls sorted from lowest [0] to highest [1]</li>
-<ul>
+</ul>
 Returns:<br>
 <ul>
 <li>roll_list: A list of the roll result.</li>
