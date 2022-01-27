@@ -1,4 +1,5 @@
-"""A package of functions for rolling various kinds of dice.
+"""A package of functions for rolling dice implented as a CLI.
+
 
 The module contains functions that replicate rolling polyhedral dice with any
 number of faces and rolling them in different ways; as an array, at advantage;
@@ -9,7 +10,8 @@ returns a dictionary of all the elements of a die string (number of dice,
 die type, symbol & modifier) used by other functions to roll dice.
 
 The cli function packages all of the above into an installable command line 
-interface called 'dice'."""
+interface called 'dice', implementing the various types of rolls through the 
+--rolltype option."""
 
 from random import randint
 import re
@@ -278,18 +280,22 @@ def roll_ability_scores() -> list[int]:
 def cli(diestring, rolltype) -> None:
     """Roll a DIESTRING for a given rolltype.
     
-    DIESTRING is a string of the format: X dY ? Z, where:\n
-        x is the number of dice to be rolled\n
-        dY is the kind of die to roll, Y being the number of faces\n
-        ? is an optional operator which applies a modifier to the roll total\n
-        Z is an optional modifier applied to the roll total"""
-    if rolltype == "critical":
-        click.echo(f"Rolled: {diestring}\nResult: {roll_crit(diestring)}")
-    elif rolltype == "advantage":
-        click.echo(f"Rolled: {diestring}\nResult: {roll_advantage(diestring)}")
-    elif rolltype == "disadvantage":
-        click.echo(f"Rolled: {diestring}\nResult: {roll_disadvantage(diestring)}")
-    elif rolltype == "array":
-        click.echo(f"Rolled: {diestring}\nResult: {roll_array(diestring)}")
+        DIESTRING is a string of the format: X dY ? Z, where:\n
+            x is the number of dice to be rolled\n
+            dY is the kind of die to roll, Y being the number of faces\n
+            ? is an optional operator which applies a modifier to the roll total\n
+            Z is an optional modifier applied to the roll total\n
+        Otherwise, type 'scores' to roll an array of 6 (4d6 - the lowest die)."""
+    if diestring == "scores":
+        click.echo(f"Rolled: 6 (4d6 - lowest die)\nResult: {roll_ability_scores()}")
     else:
-        click.echo(f"Rolled: {diestring}\nResult: {roll_string(diestring)}")
+        if rolltype == "critical":
+            click.echo(f"Rolled: {diestring}\nResult: {roll_crit(diestring)}")
+        elif rolltype == "advantage":
+            click.echo(f"Rolled: {diestring}\nResult: {roll_advantage(diestring)}")
+        elif rolltype == "disadvantage":
+            click.echo(f"Rolled: {diestring}\nResult: {roll_disadvantage(diestring)}")
+        elif rolltype == "array":
+            click.echo(f"Rolled: {diestring}\nResult: {roll_array(diestring)}")
+        else:
+            click.echo(f"Rolled: {diestring}\nResult: {roll_string(diestring)}")
