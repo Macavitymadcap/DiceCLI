@@ -17,6 +17,7 @@ Dice returns the total for a roll of a DIESTRING of the format XdY?Z, where:<br>
 <li>Z is an optional modifier applied to the roll total</li>
 </ul>
 If DIESTRING is 'scores', an array of 6 (4d6 - the lowest die) is returned.<br>
+<br>
 --rolltype can be used to roll the DIESTRING with the following options:
 <ul>
 <li>advantage: roll twice, ordered high to low</li>
