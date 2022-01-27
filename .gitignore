@@ -1,7 +1,7 @@
 **/__pycache__/
-pyenv.cfg
-Scripts/
-dice.egg-info/
-Include/
-Lib/
-roll.egg-infoScripts/
+*pyenv.cfg
+*Scripts/
+*dice.egg-info/
+*Include/
+*Lib/
+*roll.egg-infoScripts/
