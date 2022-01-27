@@ -278,14 +278,12 @@ def roll_ability_scores() -> list[int]:
                           standard: standard roll of dice""",
                   )
 def cli(diestring, rolltype) -> None:
-    """Roll a DIESTRING for a given rolltype.
-    
-        DIESTRING is a string of the format: X dY ? Z, where:\n
+    """Return the total for a roll of a DIESTRING of the format XdY?Z, where:\n
             x is the number of dice to be rolled\n
             dY is the kind of die to roll, Y being the number of faces\n
             ? is an optional operator which applies a modifier to the roll total\n
             Z is an optional modifier applied to the roll total\n
-        Otherwise, type 'scores' to roll an array of 6 (4d6 - the lowest die)."""
+        If DIESTRING is 'scores', an array of 6 (4d6 - the lowest die) is returned."""
     if diestring == "scores":
         click.echo(f"Rolled: 6 (4d6 - lowest die)\nResult: {roll_ability_scores()}")
     else:
