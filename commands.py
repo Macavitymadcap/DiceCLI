@@ -10,8 +10,13 @@ from dice import roll_advantage, roll_array, roll_crit, roll_disadvantage, roll_
                   ["standard", "critical", "advantage", "disadvantage", "array"], 
                   case_sensitive=False), default="standard"
                   )
-def cli(diestring, rolltype):
-    """Echo roll of diestring based on rolltype."""
+def cli(diestring, rolltype) -> None:
+    """Echo roll of diestring based on rolltype.
+    
+    Args:
+        diestring (str): String of dice to be rolled
+
+    """
     if rolltype == "crtitical":
         click.echo(f"Rolled: {diestring}\nResult: {roll_crit(diestring)}")
     elif rolltype == "advantage":
