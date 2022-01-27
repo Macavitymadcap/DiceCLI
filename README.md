@@ -4,7 +4,7 @@ The module contains functions that replicate rolling polyhedral dice with any nu
 This is acheived with the parse_die_string function, which takes a string and  returns a dictionary of all the elements of a die string (number of dice, die type, symbol & modifier) used by other functions to roll dice.<br>
 The cli function packages all of the above into an installable command line  interface called 'dice', implementing the various types of rolls through the --rolltype option.<br>
 To install the command line interface, download the package and navigate to the root folder and issue the following command:<br>
-<code>pip install --editable .</code>
+<code>pip install --editable .</code><br>
 You may wish to create a virtual environment before doing this, ensuring the package does not experience dependency conflicts.</p>
 
 <h3>cli(diestring, rolltype) -> None</h3>
