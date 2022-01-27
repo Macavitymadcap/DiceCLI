@@ -267,12 +267,7 @@ def roll_ability_scores() -> list[int]:
                   case_sensitive=False), default="standard"
                   )
 def cli(diestring, rolltype) -> None:
-    """Echo roll of diestring based on rolltype.
-    
-    Args:
-        diestring (str): String of dice to be rolled
-        rolltype (str): String of roll type from 'advantage', 'array',
-        'critical', 'disadvantage' and the default 'standard'."""
+    """Echo roll of diestring based on rolltype."""
     if rolltype == "critical":
         click.echo(f"Rolled: {diestring}\nResult: {roll_crit(diestring)}")
     elif rolltype == "advantage":
