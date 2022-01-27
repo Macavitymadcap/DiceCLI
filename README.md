@@ -18,16 +18,17 @@ Attributes:<br>
 roll_list (list): A list of rolls sorted from highest [0] to lowest [1]<br>
 Returns:<br>
 roll_list: A list of the roll result.</p>
+
 <h3>roll_array(string: str) -> list[int]</h3>
 <p>Return an array of a number of die rolls with modifiers.<br>
-Args:<br>
-string (str): A string of die with modifiers to be rolled a number of times<br>
-Attributes:<br>
-parsed_string (dict): A dictionary of the roll elements in the string<br>
-num_dice (int): Int of the number of dice to be rolled, default 1<br>
-die (str): String of type of die to be rolled<br>
-symbol (str): String of operator to be appled, default +<br>
-modifier (int): An int to be applied to roll with operator, default 0<br>
-rolls (list): List of ints of all rolls with modifier applied to each<br>
-Returns:<br>
-rolls: An array of ints of die rolls</p>
+Args:
+- string (str): A string of die with modifiers to be rolled a number of times
+Attributes:
+- parsed_string (dict): A dictionary of the roll elements in the string
+- num_dice (int): Int of the number of dice to be rolled, default 1
+- die (str): String of type of die to be rolled
+- symbol (str): String of operator to be appled, default +
+- modifier (int): An int to be applied to roll with operator, default 0
+- rolls (list): List of ints of all rolls with modifier applied to each
+Returns:
+- rolls: An array of ints of die rolls</p>
