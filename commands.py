@@ -31,7 +31,3 @@ def cli(diestring, rolltype) -> None:
         click.echo(f"Rolled: {diestring}\nResult: {roll_array(diestring)}")
     else:
         click.echo(f"Rolled: {diestring}\nResult: {roll_string(diestring)}")
-
-
-if __name__ == "__main__":
-    cli()
