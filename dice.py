@@ -2,7 +2,7 @@
 
 The module contains functions that replicate rolling polyhedral dice with any
 number of faces and rolling them in different ways; as an array, at advantage;
-as a critical hit; at disadvantage and to roll an array of 6 ability scores.
+as a critical hit; at disadvantage and rolling an array of 6 ability scores.
 
 This is acheived with the parse_die_string function, which takes a string and 
 returns a dictionary of all the elements of a die string (number of dice,
