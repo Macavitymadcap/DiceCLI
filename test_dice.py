@@ -2,8 +2,6 @@
 
 import unittest
 
-from parso import parse
-
 from dice import parse_die_string
 from dice import roll_ability_scores
 from dice import roll_advantage
