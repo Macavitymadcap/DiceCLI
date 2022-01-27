@@ -1,6 +1,5 @@
 """A package of functions for rolling dice implented as a CLI.
 
-
 The module contains functions that replicate rolling polyhedral dice with any
 number of faces and rolling them in different ways; as an array, at advantage;
 as a critical hit; at disadvantage and to roll an array of 6 ability scores.
