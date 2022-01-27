@@ -264,10 +264,22 @@ def roll_ability_scores() -> list[int]:
 @click.option("--rolltype", 
               type=click.Choice(
                   ["advantage", "disadvantage", "array", "critical", "standard"], 
-                  case_sensitive=False), default="standard"
+                  case_sensitive=False), default="standard", 
+                  help="""Type of roll to make:\n
+                          advantage: roll twice, ordered high to low\n
+                          disadvantage: roll twice, ordered low to high\n
+                          array: roll list of x dice\n
+                          critical: roll with double the dice\n
+                          standard: standard roll of dice""",
                   )
 def cli(diestring, rolltype) -> None:
-    """Echo roll of diestring based on rolltype."""
+    """Roll a DIESTRING for a given rolltype.
+    
+    DIESTRING is a string of the format: X dY ? Z, where:\n
+        x is the number of dice to be rolled\n
+        dY is the kind of die to roll, Y being the number of faces\n
+        ? is an optional operator which applies a modifier to the roll total\n
+        Z is an optional modifier applied to the roll total"""
     if rolltype == "critical":
         click.echo(f"Rolled: {diestring}\nResult: {roll_crit(diestring)}")
     elif rolltype == "advantage":
