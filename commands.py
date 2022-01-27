@@ -11,7 +11,7 @@ from dice import roll_advantage, roll_array, roll_crit, roll_disadvantage, roll_
                   case_sensitive=False), default="standard"
                   )
 def cli(diestring, rolltype):
-    """Entry point for command line."""
+    """Echo roll of diestring based on rolltype."""
     if rolltype == "crtitical":
         click.echo(f"Rolled: {diestring}\nResult: {roll_crit(diestring)}")
     elif rolltype == "advantage":
