@@ -2,7 +2,7 @@ from setuptools import setup
 
 
 setup(
-    name='yourscript',
+    name='roll',
     version='0.1.0',
     py_modules=['dice', 'commands'],
     install_requires=[
