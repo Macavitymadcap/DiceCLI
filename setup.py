@@ -1,3 +1,5 @@
+"""Setup configuration for the command line interface."""
+
 from setuptools import setup
 
 
