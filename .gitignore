@@ -1,1 +1,6 @@
 **/__pycache__/
+**/dice.egg-info/
+**/Include/
+**/roll.egg-info/
+**/Scripts/
+pyenv.cfg
