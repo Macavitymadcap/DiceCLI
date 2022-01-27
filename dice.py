@@ -8,7 +8,6 @@ This acheived with the parse_die_string function, which takes a string and
 returns a dictionary of all the elements of a die string (number of dice,
 die type, symbol & modifier) used by other functions to roll dice."""
 
-from ast import operator
 from random import randint
 import re
 from typing import Dict

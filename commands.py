@@ -15,8 +15,8 @@ def cli(diestring, rolltype) -> None:
     
     Args:
         diestring (str): String of dice to be rolled
-
-    """
+        rolltype (str): String of roll type from 'advantage', 'array',
+        'critical', 'disadvantage' and the default 'standard'."""
     if rolltype == "crtitical":
         click.echo(f"Rolled: {diestring}\nResult: {roll_crit(diestring)}")
     elif rolltype == "advantage":
