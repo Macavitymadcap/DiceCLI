@@ -263,7 +263,7 @@ def roll_ability_scores() -> list[int]:
 @click.argument("diestring")
 @click.option("--rolltype", 
               type=click.Choice(
-                  ["standard", "critical", "advantage", "disadvantage", "array"], 
+                  ["advantage", "disadvantage", "array", "critical", "standard"], 
                   case_sensitive=False), default="standard"
                   )
 def cli(diestring, rolltype) -> None:
