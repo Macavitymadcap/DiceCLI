@@ -6,7 +6,10 @@ as a critical hit; at disadvantage and to roll an array of 6 ability scores.
 
 This is acheived with the parse_die_string function, which takes a string and 
 returns a dictionary of all the elements of a die string (number of dice,
-die type, symbol & modifier) used by other functions to roll dice."""
+die type, symbol & modifier) used by other functions to roll dice.
+
+The cli function packages all of the above into an installable command line 
+interface called 'dice'."""
 
 from random import randint
 import re
