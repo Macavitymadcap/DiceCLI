@@ -265,18 +265,18 @@ def roll_ability_scores() -> list[int]:
 
 @click.command()
 @click.argument("diestring")
-@click.option("--rolltype", 
+@click.option("--kind", 
               type=click.Choice(
                   ["advantage", "disadvantage", "array", "critical", "standard"], 
                   case_sensitive=False), default="standard", 
-                  help="""Type of roll to make:\n
+                  help="""kind of roll to make:\n
                           advantage: roll twice, ordered high to low\n
                           disadvantage: roll twice, ordered low to high\n
                           array: roll list of x dice\n
                           critical: roll with double the dice\n
                           standard: standard roll of dice""",
                   )
-def cli(diestring, rolltype) -> None:
+def cli(diestring, kind) -> None:
     """Return the total for a roll of a DIESTRING of the format XdY?Z, where:\n
             x is the number of dice to be rolled\n
             dY is the kind of die to roll, Y being the number of faces\n
@@ -286,13 +286,13 @@ def cli(diestring, rolltype) -> None:
     if diestring == "scores":
         click.echo(f"Rolled: 6 (4d6 - lowest die)\nResult: {roll_ability_scores()}")
     else:
-        if rolltype == "critical":
+        if kind == "critical":
             click.echo(f"Rolled: {diestring}\nResult: {roll_crit(diestring)}")
-        elif rolltype == "advantage":
+        elif kind == "advantage":
             click.echo(f"Rolled: {diestring}\nResult: {roll_advantage(diestring)}")
-        elif rolltype == "disadvantage":
+        elif kind == "disadvantage":
             click.echo(f"Rolled: {diestring}\nResult: {roll_disadvantage(diestring)}")
-        elif rolltype == "array":
+        elif kind == "array":
             click.echo(f"Rolled: {diestring}\nResult: {roll_array(diestring)}")
         else:
             click.echo(f"Rolled: {diestring}\nResult: {roll_string(diestring)}")

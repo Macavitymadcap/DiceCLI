@@ -7,7 +7,7 @@ To install the command line interface, download the package, navigate to the roo
 <code>pip install --editable .</code><br>
 You may wish to create a virtual environment before doing this, ensuring the package does not experience dependency conflicts.</p>
 
-<h3>cli(diestring, rolltype) -> None</h3>
+<h3>cli(diestring, kind) -> None</h3>
 <p>The entry point for the dice command line tool.<br>
 Dice returns the total for a roll of a DIESTRING of the format XdY?Z, where:<br>
 <ul>
@@ -18,7 +18,7 @@ Dice returns the total for a roll of a DIESTRING of the format XdY?Z, where:<br>
 </ul>
 If DIESTRING is 'scores', an array of 6 (4d6 - the lowest die) is returned.<br>
 <br>
---rolltype can be used to roll the DIESTRING with the following options:
+--kind can be used to roll the DIESTRING with the following options:
 <ul>
 <li>advantage: roll twice, ordered high to low</li>
 <li>disadvantage: roll twice, ordered low to high</li>
