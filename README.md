@@ -9,9 +9,9 @@ You may wish to create a virtual environment before doing this, ensuring the pac
 
 <h3>cli(diestring, kind) -> None</h3>
 <p>The entry point for the dice command line tool.<br>
-Dice returns the total for a roll of a DIESTRING of the format XdY?Z, where:<br>
+The dice command returns the total for a roll of a DIESTRING of the format XdY?Z, where:<br>
 <ul>
-<li>x is the number of dice to be rolled</li>
+<li>X is the number of dice to be rolled</li>
 <li>dY is the kind of die to roll, Y being the number of faces</li>
 <li>is an optional operator which applies a modifier to the roll total</li>
 <li>Z is an optional modifier applied to the roll total</li>
