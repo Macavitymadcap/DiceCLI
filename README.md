@@ -13,7 +13,7 @@ The dice command returns the total for a roll of a DIESTRING of the format XdY?Z
 <ul>
 <li>X is the number of dice to be rolled</li>
 <li>dY is the kind of die to roll, Y being the number of faces</li>
-<li>is an optional operator which applies a modifier to the roll total</li>
+<li>? is an optional operator which applies a modifier to the roll total</li>
 <li>Z is an optional modifier applied to the roll total</li>
 </ul>
 If DIESTRING is 'scores', an array of 6 (4d6 - the lowest die) is returned.<br>
