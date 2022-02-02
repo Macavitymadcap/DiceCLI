@@ -24,7 +24,7 @@ If DIESTRING is 'scores', an array of 6 (4d6 - the lowest die) is returned.<br>
 <li>disadvantage: roll twice, ordered low to high</li>
 <li>array: roll list of x dice</li>
 <li>critical: roll with double the dice</li>
-<li>standard: standard roll of dice</li>
+<li>standard: standard roll of dice (default option)</li>
 </ul></p>
 
 <h3>parse_die_string(string: str) -> Dict[str, Union[str, int]]:</h3>
