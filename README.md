@@ -2,7 +2,7 @@
 <p>A package of functions for rolling dice implented as a CLI.<br>
 The module contains functions that replicate rolling polyhedral dice with any number of faces and rolling them in different ways; as an array, at advantage; as a critical hit; at disadvantage and rolling an array of 6 ability scores.<br>
 This is acheived with the parse_die_string function, which takes a string and  returns a dictionary of all the elements of a die string (number of dice, die type, symbol & modifier) used by other functions to roll dice.<br>
-The cli function packages all of the above into an installable command line  interface called 'dice', implementing the various types of rolls through the --rolltype option.<br>
+The cli function packages all of the above into an installable command line  interface called 'dice', implementing the various types of rolls through the --kind option.<br>
 To install the command line interface, download the package, navigate to the root folder and issue the following command:<br>
 <code>pip install --editable .</code><br>
 You may wish to create a virtual environment before doing this, ensuring the package does not experience dependency conflicts.</p>
