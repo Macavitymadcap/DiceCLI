@@ -308,13 +308,13 @@ def cli(diestring, kind) -> None:
             else:
                 roll_total += (dice_total + parsed_string["modifier"])
 
-            click.echo(f"Rolling: {diestring}\nAllDice: {all_dice}\nRollSum: {roll_total}")
+            click.echo(f"Rolling: {diestring} (critical)\nAllDice: {all_dice}\nRollSum: {roll_total}")
 
         elif kind == "advan":
-            click.echo(f"Rolling: {diestring}\nResults: {roll_advantage(diestring)}")
+            click.echo(f"Rolling: {diestring} (advantage)\nResults: {roll_advantage(diestring)}")
 
         elif kind == "disad":
-            click.echo(f"Rolling: {diestring}\nResults: {roll_disadvantage(diestring)}")
+            click.echo(f"Rolling: {diestring} (disadvantage)\nResults: {roll_disadvantage(diestring)}")
 
         elif kind == "array":
             parsed_string = parse_die_string(diestring)
@@ -337,7 +337,7 @@ def cli(diestring, kind) -> None:
             else:
                 roll_totals = [die + parsed_string["modifier"] for die in all_dice]
             
-            click.echo(f"Rolling: {diestring}\nAllDice: {all_dice}\nRollsum: {roll_totals}")
+            click.echo(f"Rolling: {diestring} (array)\nAllDice: {all_dice}\nRollsum: {roll_totals}")
 
         else:
             parsed_string = parse_die_string(diestring)
@@ -350,11 +350,14 @@ def cli(diestring, kind) -> None:
             roll_total = 0
             if parsed_string["operator"] == "-":
                 roll_total += (dice_total - parsed_string["modifier"])
+
             elif parsed_string["operator"] == "/" or parsed_string["operator"] == "÷":
                 roll_total += (dice_total / parsed_string["modifier"])
+
             elif parsed_string["modifier"] == "x" or parsed_string["modifier"] == "X" or parsed_string["modifier"] == "*":
                 roll_total += (dice_total * parsed_string["modifier"])
+
             else:
                 roll_total += (dice_total + parsed_string["modifier"])
 
-            click.echo(f"Rolling: {diestring}\nAllDice: {all_dice}\nRollSum: {roll_total}")
+            click.echo(f"Rolling: {diestring} (standard)\nAllDice: {all_dice}\nRollSum: {roll_total}")
