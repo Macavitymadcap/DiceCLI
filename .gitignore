@@ -1,2 +1,6 @@
 **/__pycache__/
+dice.egg-info/
+Include/
+Lib/
+Scripts/
 pyvenv.cfg
