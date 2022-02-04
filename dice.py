@@ -284,15 +284,49 @@ def cli(diestring, kind) -> None:
             Z is an optional modifier applied to the roll total\n
         If DIESTRING is 'scores', an array of 6 (4d6 - the lowest die) is returned."""
     if diestring == "scores":
-        click.echo(f"Rolled: 6 (4d6 - lowest die)\nResult: {roll_ability_scores()}")
+        click.echo(f"Rolling: 6 (4d6 - lowest die)\nResults: {roll_ability_scores()}")
     else:
         if kind == "crit":
-            click.echo(f"Rolled: {diestring}\nResult: {roll_crit(diestring)}")
+            parsed_string = parse_die_string(diestring)
+            all_dice = roll_array(f"{parsed_string['num dice'] * 2}{parsed_string['die']}")
+            dice_total = 0
+
+            for roll in all_dice:
+                dice_total += roll
+            
+            roll_total = 0
+            if parsed_string["operator"] == "-":
+                roll_total += (dice_total - parsed_string["modifier"])
+            elif parsed_string["operator"] == "/" or parsed_string["operator"] == "÷":
+                roll_total += (dice_total / parsed_string["modifier"])
+            elif parsed_string["modifier"] == "x" or parsed_string["modifier"] == "X" or parsed_string["modifier"] == "*":
+                roll_total += (dice_total * parsed_string["modifier"])
+            else:
+                roll_total += (dice_total + parsed_string["modifier"])
+
+            click.echo(f"Rolling: {diestring}\nAllDice: {all_dice}\nRollSum: {roll_total}")
         elif kind == "advan":
-            click.echo(f"Rolled: {diestring}\nResult: {roll_advantage(diestring)}")
+            click.echo(f"Rolling: {diestring}\nResults: {roll_advantage(diestring)}")
         elif kind == "disad":
-            click.echo(f"Rolled: {diestring}\nResult: {roll_disadvantage(diestring)}")
+            click.echo(f"Rolling: {diestring}\nResults: {roll_disadvantage(diestring)}")
         elif kind == "array":
-            click.echo(f"Rolled: {diestring}\nResult: {roll_array(diestring)}")
+            click.echo(f"Rolling: {diestring}\nResults: {roll_array(diestring)}")
         else:
-            click.echo(f"Rolled: {diestring}\nResult: {roll_string(diestring)}")
+            parsed_string = parse_die_string(diestring)
+            all_dice = roll_array(f"{parsed_string['num dice']}{parsed_string['die']}")
+            dice_total = 0
+
+            for roll in all_dice:
+                dice_total += roll
+            
+            roll_total = 0
+            if parsed_string["operator"] == "-":
+                roll_total += (dice_total - parsed_string["modifier"])
+            elif parsed_string["operator"] == "/" or parsed_string["operator"] == "÷":
+                roll_total += (dice_total / parsed_string["modifier"])
+            elif parsed_string["modifier"] == "x" or parsed_string["modifier"] == "X" or parsed_string["modifier"] == "*":
+                roll_total += (dice_total * parsed_string["modifier"])
+            else:
+                roll_total += (dice_total + parsed_string["modifier"])
+
+            click.echo(f"Rolling: {diestring}\nAllDice: {all_dice}\nRollSum: {roll_total}")
