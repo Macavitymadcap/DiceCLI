@@ -12,6 +12,7 @@ The cli function packages all of the above into an installable command line
 interface called 'dice', implementing the various types of rolls through the 
 --rolltype option."""
 
+from copy import deepcopy
 from random import randint
 import re
 from typing import Dict
@@ -284,7 +285,19 @@ def cli(diestring, kind) -> None:
             Z is an optional modifier applied to the roll total\n
         If DIESTRING is 'scores', an array of 6 (4d6 - the lowest die) is returned."""
     if diestring == "scores":
-        click.echo(f"Rolling: 6 (4d6 - lowest die)\nResults: {roll_ability_scores()}")
+        all_dice = [roll_array("4d6") for i in range(6)]
+        rolls_to_mod = deepcopy(all_dice)
+
+        for roll in rolls_to_mod:
+            roll.sort()
+            roll.pop(0)
+        
+        totals = [0, 0, 0, 0, 0, 0]
+
+        for index, dice_rolls in enumerate(rolls_to_mod):
+            totals[index] += sum(dice_rolls)
+
+        click.echo(f"Rolling: 6 (4d6 - lowest die)\nAllDice: {all_dice}\nRollSum: {totals}")
 
     else:
         if kind == "crit":
@@ -311,20 +324,48 @@ def cli(diestring, kind) -> None:
             click.echo(f"Rolling: {diestring} (critical)\nAllDice: {all_dice}\nRollSum: {roll_total}")
 
         elif kind == "advan":
-            click.echo(f"Rolling: {diestring} (advantage)\nResults: {roll_advantage(diestring)}")
+            parsed_string = parse_die_string(diestring)
+            all_dice = roll_advantage(f"{parsed_string['num dice']}{parsed_string['die']}")
+            roll_totals = []
+
+            if parsed_string["operator"] == "-":
+                roll_totals = [die - parsed_string["modifier"] for die in all_dice]
+
+            elif parsed_string["operator"] == "/" or parsed_string["operator"] == "÷":
+                roll_totals = [die / parsed_string["modifier"] for die in all_dice]
+
+            elif parsed_string["modifier"] == "x" or parsed_string["modifier"] == "X" or parsed_string["modifier"] == "*":
+                roll_totals = [die * parsed_string["modifier"] for die in all_dice]
+
+            else:
+                roll_totals = [die + parsed_string["modifier"] for die in all_dice]
+            
+            click.echo(f"Rolling: {diestring} (advantage)\nAllDice: {all_dice}\nRollsum: {roll_totals}")
 
         elif kind == "disad":
-            click.echo(f"Rolling: {diestring} (disadvantage)\nResults: {roll_disadvantage(diestring)}")
+            parsed_string = parse_die_string(diestring)
+            all_dice = roll_disadvantage(f"{parsed_string['num dice']}{parsed_string['die']}")
+            roll_totals = []
+            
+            if parsed_string["operator"] == "-":
+                roll_totals = [die - parsed_string["modifier"] for die in all_dice]
+
+            elif parsed_string["operator"] == "/" or parsed_string["operator"] == "÷":
+                roll_totals = [die / parsed_string["modifier"] for die in all_dice]
+
+            elif parsed_string["modifier"] == "x" or parsed_string["modifier"] == "X" or parsed_string["modifier"] == "*":
+                roll_totals = [die * parsed_string["modifier"] for die in all_dice]
+
+            else:
+                roll_totals = [die + parsed_string["modifier"] for die in all_dice]
+            
+            click.echo(f"Rolling: {diestring} (disadvantage)\nAllDice: {all_dice}\nRollsum: {roll_totals}")
 
         elif kind == "array":
             parsed_string = parse_die_string(diestring)
             all_dice = roll_array(f"{parsed_string['num dice']}{parsed_string['die']}")
-            dice_total = 0
-
-            for roll in all_dice:
-                dice_total += roll
-
             roll_totals = []
+
             if parsed_string["operator"] == "-":
                 roll_totals = [die - parsed_string["modifier"] for die in all_dice]
 
