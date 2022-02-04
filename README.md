@@ -5,7 +5,8 @@ This is acheived with the parse_die_string function, which takes a string and  r
 The cli function packages all of the above into an installable command line  interface called 'dice', implementing the various types of rolls through the --kind option.<br>
 To install the command line interface, download the package, navigate to the root folder and issue the following command:<br>
 <code>pip install --editable .</code><br>
-You may wish to create a virtual environment before doing this, ensuring the package does not experience dependency conflicts.</p>
+You may wish to create a virtual environment before doing this, ensuring the package does not experience dependency conflicts.<br>
+Also included is a dockerfile that will allow you to install the app in a containerised linux terminal if you so wish.</p>
 
 <h3>cli(diestring, kind) -> None</h3>
 <p>The entry point for the dice command line tool.<br>
