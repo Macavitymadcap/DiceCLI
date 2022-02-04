@@ -285,6 +285,7 @@ def cli(diestring, kind) -> None:
         If DIESTRING is 'scores', an array of 6 (4d6 - the lowest die) is returned."""
     if diestring == "scores":
         click.echo(f"Rolling: 6 (4d6 - lowest die)\nResults: {roll_ability_scores()}")
+
     else:
         if kind == "crit":
             parsed_string = parse_die_string(diestring)
@@ -297,20 +298,47 @@ def cli(diestring, kind) -> None:
             roll_total = 0
             if parsed_string["operator"] == "-":
                 roll_total += (dice_total - parsed_string["modifier"])
+
             elif parsed_string["operator"] == "/" or parsed_string["operator"] == "÷":
                 roll_total += (dice_total / parsed_string["modifier"])
+
             elif parsed_string["modifier"] == "x" or parsed_string["modifier"] == "X" or parsed_string["modifier"] == "*":
                 roll_total += (dice_total * parsed_string["modifier"])
+
             else:
                 roll_total += (dice_total + parsed_string["modifier"])
 
             click.echo(f"Rolling: {diestring}\nAllDice: {all_dice}\nRollSum: {roll_total}")
+
         elif kind == "advan":
             click.echo(f"Rolling: {diestring}\nResults: {roll_advantage(diestring)}")
+
         elif kind == "disad":
             click.echo(f"Rolling: {diestring}\nResults: {roll_disadvantage(diestring)}")
+
         elif kind == "array":
-            click.echo(f"Rolling: {diestring}\nResults: {roll_array(diestring)}")
+            parsed_string = parse_die_string(diestring)
+            all_dice = roll_array(f"{parsed_string['num dice']}{parsed_string['die']}")
+            dice_total = 0
+
+            for roll in all_dice:
+                dice_total += roll
+
+            roll_totals = []
+            if parsed_string["operator"] == "-":
+                roll_totals = [die - parsed_string["modifier"] for die in all_dice]
+
+            elif parsed_string["operator"] == "/" or parsed_string["operator"] == "÷":
+                roll_totals = [die / parsed_string["modifier"] for die in all_dice]
+
+            elif parsed_string["modifier"] == "x" or parsed_string["modifier"] == "X" or parsed_string["modifier"] == "*":
+                roll_totals = [die * parsed_string["modifier"] for die in all_dice]
+
+            else:
+                roll_totals = [die + parsed_string["modifier"] for die in all_dice]
+            
+            click.echo(f"Rolling: {diestring}\nAllDice: {all_dice}\nRollsum: {roll_totals}")
+
         else:
             parsed_string = parse_die_string(diestring)
             all_dice = roll_array(f"{parsed_string['num dice']}{parsed_string['die']}")
