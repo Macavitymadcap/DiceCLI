@@ -74,10 +74,18 @@ class die_test(unittest.TestCase):
         self.assertIsInstance(string_roll, int)
         self.assertIsInstance(crit_roll, int)
         self.assertIsInstance(advantage_roll, list)
+        self.assertIsInstance(advantage_roll[0], int)
+        self.assertIsInstance(advantage_roll[1], int)
         self.assertIsInstance(disadvantage_roll, list)
+        self.assertIsInstance(disadvantage_roll[0], int)
+        self.assertIsInstance(disadvantage_roll[1], int)
         self.assertIsInstance(array_roll, list)
         self.assertIsInstance(scores_roll, list)
         self.assertIsInstance(parsed_string, dict)
+        self.assertIsInstance(parsed_string[0], int)
+        self.assertIsInstance(parsed_string[1], str)
+        self.assertIsInstance(parsed_string[2], str)
+        self.assertIsInstance(parsed_string[3], int)
 
 
 if __name__ == "__main__":
