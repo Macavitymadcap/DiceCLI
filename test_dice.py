@@ -90,10 +90,10 @@ class die_test(unittest.TestCase):
         self.assertIsInstance(scores_roll[4], int)
         self.assertIsInstance(scores_roll[5], int)
         self.assertIsInstance(parsed_string, dict)
-        self.assertIsInstance(parsed_string[0], int)
-        self.assertIsInstance(parsed_string[1], str)
-        self.assertIsInstance(parsed_string[2], str)
-        self.assertIsInstance(parsed_string[3], int)
+        self.assertIsInstance(parsed_string["num dice"], int)
+        self.assertIsInstance(parsed_string["die"], str)
+        self.assertIsInstance(parsed_string["operator"], str)
+        self.assertIsInstance(parsed_string["modifier"], int)
 
 
 if __name__ == "__main__":
